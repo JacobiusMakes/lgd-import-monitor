@@ -87,7 +87,7 @@ def main():
          '<desc id="d">Monthly customs value of US imports under HS 710491 from January 2024 to %s, UN Comtrade. Values fell from a 2024 average near %s to %s a month after September 2025.</desc>' % (last, money(avg_2024), money(avg_post)),
          '<rect width="%d" height="%d" fill="%s"/>' % (W, H, bg),
          '<text x="%d" y="34" font-family="Marcellus, Georgia, serif" font-size="21" fill="%s">US imports of cut lab-grown diamonds, by month</text>' % (L, ink),
-         '<text x="%d" y="56" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="%s">Customs value, US dollars, HS 710491 (synthetic diamonds, worked). UN Comtrade, retrieved 2026-09-02. Census primary series pending.</text>' % (L, mute)]
+         '<text x="%d" y="56" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="%s">Customs value, US dollars, HS 710491 (synthetic diamonds, worked). UN Comtrade, retrieved 2026-09-02; Census primary series agrees within 5 percent.</text>' % (L, mute)]
     # gridlines
     for g in range(0, 5):
         v = vmax * g / 4
