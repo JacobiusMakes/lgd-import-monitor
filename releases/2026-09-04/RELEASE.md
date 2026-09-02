@@ -102,4 +102,4 @@ Average declared value per stone is customs value divided by the number of stone
   Retains 10% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25).
 - Census FT-900 release schedule: July 2026 data on 3 September 2026.
 
-Chart: chart-monthly-value.svg. Data: ../../data/us-imports-hs710491-monthly.csv.
+Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/1/ (interactive, embeddable). Data: ../../data/us-imports-hs710491-monthly.csv.

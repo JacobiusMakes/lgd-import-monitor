@@ -216,7 +216,7 @@ by spring 2026.
   Retains 10%% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25).
 - Census FT-900 release schedule: July 2026 data on 3 September 2026.
 
-Chart: chart-monthly-value.svg. Data: ../../data/us-imports-hs710491-monthly.csv.
+Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/1/ (interactive, embeddable). Data: ../../data/us-imports-hs710491-monthly.csv.
 """ % dict(
         ed=a.edition, last_val=money(world[last]), last_lbl="%s-%s" % (last[:4], last[4:]),
         yoy=("down %.0f percent" % -yoy if yoy is not None and yoy < 0 else ("up %.0f percent" % yoy if yoy is not None else "n/a")),
