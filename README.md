@@ -25,3 +25,12 @@ python scripts/census_pull.py --from 2024-01 --to 2026-07 --out data/census-hts7
 
 Data compilations, text, and charts: CC BY 4.0. Cite "Stienhardt, Lab-Grown Import Monitor,
 [edition date]". Census and UN Comtrade remain the sources of record and are cited in every table.
+
+## Related open data from Stienhardt
+
+* [agent-shoppable-census](https://github.com/JacobiusMakes/agent-shoppable-census): which US ring
+  sellers an AI agent can actually shop, split into merchant-built and platform-inherited.
+* [diamondbench](https://github.com/JacobiusMakes/diamondbench): an open benchmark of AI answer
+  accuracy on diamond questions.
+* [dutch-marquise-spec](https://github.com/JacobiusMakes/dutch-marquise-spec): the open geometry
+  specification for the Dutch Marquise cut (DOI 10.5281/zenodo.21938899).
