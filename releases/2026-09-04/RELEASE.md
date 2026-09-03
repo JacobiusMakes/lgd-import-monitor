@@ -59,7 +59,6 @@ by spring 2026.
 
 | Month | Census customs value | Stones (No.) | Average value per stone | Comtrade value | Difference |
 |---|---|---|---|---|---|
-| 2025-06 | $31.8 million | 2,488,225 | $13 | $32.3 million | -1.5% |
 | 2025-07 | $67.3 million | 2,939,544 | $23 | $67.8 million | -0.8% |
 | 2025-08 | $51.9 million | 1,924,424 | $27 | $52.4 million | -1.0% |
 | 2025-09 | $6.2 million | 502,970 | $12 | $6.5 million | -5.2% |
@@ -72,6 +71,7 @@ by spring 2026.
 | 2026-04 | $19.1 million | 1,558,363 | $12 | $19.6 million | -2.5% |
 | 2026-05 | $25.5 million | 1,566,368 | $16 | $26.2 million | -2.6% |
 | 2026-06 | $18.3 million | 1,401,926 | $13 | $18.7 million | -2.5% |
+| 2026-07 | $27.8 million | 1,324,682 | $21 | n/a | n/a |
 
 Average declared value per stone is customs value divided by the number of stones, a border figure that moves with the size and quality mix as much as with price.
 
@@ -102,4 +102,4 @@ Average declared value per stone is customs value divided by the number of stone
   Retains 10% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25).
 - Census FT-900 release schedule: July 2026 data on 3 September 2026.
 
-Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/1/ (interactive, embeddable). Data: ../../data/us-imports-hs710491-monthly.csv.
+Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/ (interactive, embeddable, always the latest published version). Data: ../../data/us-imports-hs710491-monthly.csv.
