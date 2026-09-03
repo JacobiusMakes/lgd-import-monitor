@@ -115,7 +115,9 @@ def main():
                                       "source-name": "Semrush, US database, retrieved %s" % a.pull,
                                       "source-url": "https://github.com/JacobiusMakes/lgd-import-monitor",
                                       "byline": "Stienhardt, Lab-Grown Import Monitor, edition %s" % a.edition},
-                         "visualize": {"base-color": "#2F57B0", "thick": False, "sort-bars": True, "value-label-alignment": "right"},
+                         "axes": {"labels": "Shape family", "bars": "US searches per month"},
+                         "visualize": {"base-color": "#2F57B0", "thick": False, "sort-bars": True, "value-label-alignment": "right", "show-value-labels": True},
+                         "data": {"transpose": False, "horizontal-header": True},
                          "publish": {"embed-width": 700, "embed-height": 560}}}
     if a.chart_id:
         cid = a.chart_id
