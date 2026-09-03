@@ -104,4 +104,5 @@ Latest month, Census only (UN Comtrade has not yet published it): 2026-07, $27.8
   Retains 10% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25).
 - Census FT-900 release schedule: July 2026 data on 3 September 2026.
 
-Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/ (interactive, embeddable, always the latest published version). Data: ../../data/us-imports-hs710491-monthly.csv.
+Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/ (interactive, embeddable, always the latest published version).
+Second table, search demand by ring shape (Semrush, US): shape-search-share.md, chart https://datawrapper.dwcdn.net/6MPGK/. Data: ../../data/us-imports-hs710491-monthly.csv.

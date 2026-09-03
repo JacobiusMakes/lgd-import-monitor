@@ -10,7 +10,10 @@ open data. Maintained by Stienhardt, New York. Method and caveats: [METHODOLOGY.
   from January 2024 (value in US dollars, quantity where reported, net weight where reported).
 - `scripts/census_pull.py`: pulls the primary Census series (needs a free API key in
   `CENSUS_API_KEY`).
-- `releases/`: one folder per edition with the release text, tables, and chart.
+- `releases/`: one folder per edition with the release text, tables, and chart, plus
+  `shape-search-share.md`, a like-for-like comparison of US search demand by ring outline
+  (Semrush; raw pull in `data/semrush-shape-keywords-<date>.csv`; built by
+  `scripts/build_shape_share.py`).
 
 ## Reproduce
 
