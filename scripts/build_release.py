@@ -74,6 +74,15 @@ def main():
                               ("$%.0f" % per if per else "n/a"), (money(comt) if comt else "n/a"), diff))
         census_note = ("Average declared value per stone is customs value divided by the number of stones, "
                        "a border figure that moves with the size and quality mix as much as with price.")
+        newer = [mo for mo in cm if mo > last and cm[mo]["val"] > 0]
+        if newer:
+            mo = max(newer)
+            c = cm[mo]
+            prev = "%04d%s" % (int(mo[:4]) - 1, mo[4:])
+            yoy_c = ("%.0f percent %s" % (abs(100 * (c["val"] / cm[prev]["val"] - 1)), "below" if c["val"] < cm[prev]["val"] else "above")
+                     if prev in cm and cm[prev]["val"] else "n/a")
+            census_note += ("\n\nLatest month, Census only (UN Comtrade has not yet published it): %s-%s, %s across "
+                            "{:,.0f} stones, %s the same month a year earlier." % (mo[:4], mo[4:], money(c["val"]), yoy_c)).format(c["qty"])
 
     # ---------- chart: monthly world value, single hue, annotated ----------
     W, H = 900, 470

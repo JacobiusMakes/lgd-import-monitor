@@ -75,6 +75,8 @@ by spring 2026.
 
 Average declared value per stone is customs value divided by the number of stones, a border figure that moves with the size and quality mix as much as with price.
 
+Latest month, Census only (UN Comtrade has not yet published it): 2026-07, $27.8 million across 1,324,682 stones, 59 percent below the same month a year earlier.
+
 ## What this edition cannot say yet
 
 - What kind of stones these are. The Census count runs between roughly 0.4 and 2.9 million stones
