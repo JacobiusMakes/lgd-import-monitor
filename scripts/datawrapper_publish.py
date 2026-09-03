@@ -45,14 +45,14 @@ def main():
         "type": "column-chart",
         "metadata": {
             "describe": {
-                "intro": "Customs value of US imports under HS 710491 (synthetic diamonds, worked), US dollars. The step down in September 2025 coincides with the US tariff on Indian goods rising to 50 percent; causation is not asserted.",
+                "intro": "Customs value of US imports under HS 710491 (synthetic diamonds, worked), in millions of US dollars. The step down in September 2025 coincides with the US tariff on Indian goods rising to 50 percent; causation is not asserted.",
                 "source-name": "UN Comtrade Database; US Census Bureau (HTS 7104.91.10.00)",
                 "source-url": "https://github.com/JacobiusMakes/lgd-import-monitor",
                 "byline": "Stienhardt, Lab-Grown Import Monitor, edition %s" % a.edition,
                 "number-prepend": "$", "number-append": "M",
             },
             "visualize": {"base-color": "#2F57B0", "thick": False, "value-label-format": "0.0",
-                          "grid": "y", "rotate-labels": False},
+                          "grid": "y", "rotate-labels": False, "number-prepend": "$", "number-append": "M"},
             "publish": {"embed-width": 700, "embed-height": 420},
         },
     }
