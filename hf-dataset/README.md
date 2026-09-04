@@ -74,6 +74,9 @@ print(census["train"][0])
 Each configuration is also available through Hugging Face's browser viewer,
 Parquet conversion, API, and embed controls.
 
+The repository root also includes a validated
+[Data Package v2 descriptor](datapackage.json) for all four CSV resources.
+
 ## Sources and method
 
 - US Census Bureau International Trade API, general imports, HTS
