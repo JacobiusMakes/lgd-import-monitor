@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+title: "Lab-Grown Import Monitor"
+abstract: >-
+  A reproducible monthly series on United States imports of cut
+  laboratory-grown diamonds. The primary series uses US Census Bureau HTS
+  7104.91.10.00 data and is cross-checked against UN Comtrade HS 710491 data.
+  Each dated edition includes source notes, methodology, caveats, tables, and
+  charts. Customs value is not represented as retail price or a
+  quality-adjusted price index.
+type: dataset
+authors:
+  - family-names: "Galperin"
+    given-names: "Jacob"
+    affiliation: "Stienhardt & Stones"
+version: "2026.09.04"
+date-released: "2026-09-04"
+license: CC-BY-4.0
+url: "https://github.com/JacobiusMakes/lgd-import-monitor"
+repository-code: "https://github.com/JacobiusMakes/lgd-import-monitor"
+keywords:
+  - "laboratory-grown diamonds"
+  - "lab-grown diamonds"
+  - "diamond imports"
+  - "United States trade"
+  - "US Census Bureau"
+  - "UN Comtrade"
+  - "HTS 7104.91.10.00"
+  - "HS 710491"

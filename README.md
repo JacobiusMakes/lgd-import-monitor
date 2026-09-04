@@ -2,7 +2,12 @@
 
 Monthly official statistics on United States imports of cut laboratory-grown diamonds
 (HTS 7104.91.10.00), with a UN Comtrade cross-check, published as a fixed-format release with
-open data. Maintained by Stienhardt, New York. Method and caveats: [METHODOLOGY.md](METHODOLOGY.md).
+open data. Maintained by [Stienhardt & Stones](https://stienhardt.com/?utm_source=github&utm_medium=data_repository&utm_campaign=lgd_import_monitor),
+New York. Method and caveats: [METHODOLOGY.md](METHODOLOGY.md).
+
+The dated releases are designed for citation and reuse. GitHub displays the repository's
+machine-readable citation from [CITATION.cff](CITATION.cff), including the edition date and
+dataset version.
 
 ## Contents
 
