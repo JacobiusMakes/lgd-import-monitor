@@ -1,0 +1,36 @@
+{
+  "title": "Lab-Grown Import Monitor, September 2026",
+  "description": "A reproducible monthly series on United States imports of cut laboratory-grown diamonds. The primary series uses US Census Bureau HTS 7104.91.10.00 data through July 2026 and is cross-checked against UN Comtrade HS 710491 data through June 2026. The edition includes source notes, methodology, caveats, tables, scripts, and charts. Customs value is not represented as retail price or a quality-adjusted price index.",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Galperin, Jacob",
+      "affiliation": "Stienhardt & Stones"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "keywords": [
+    "laboratory-grown diamonds",
+    "lab-grown diamonds",
+    "diamond imports",
+    "United States trade",
+    "US Census Bureau",
+    "UN Comtrade",
+    "HTS 7104.91.10.00",
+    "HS 710491"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://huggingface.co/datasets/JacobiusMakes/lab-grown-diamond-import-monitor",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://datawrapper.dwcdn.net/rLZxK/5/",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "version": "2026.09.04"
+}
