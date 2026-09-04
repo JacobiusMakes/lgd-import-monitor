@@ -15,6 +15,7 @@ dataset version.
 - [Browse and query all four dataset configurations on Hugging Face](https://huggingface.co/datasets/JacobiusMakes/lab-grown-diamond-import-monitor).
 - [Download the fixed September 2026 edition](https://github.com/JacobiusMakes/lgd-import-monitor/releases/tag/v2026.09.04).
 - [Open the interactive monthly-value chart](https://datawrapper.dwcdn.net/rLZxK/5/).
+- [Load the four tables as a Frictionless Data Package](datapackage.json).
 
 ## Contents
 

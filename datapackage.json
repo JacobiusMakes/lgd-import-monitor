@@ -1,0 +1,119 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "us-lab-grown-diamond-import-monitor",
+  "title": "US Lab-Grown Diamond Import Monitor",
+  "description": "Monthly official statistics on United States imports of cut laboratory-grown diamonds, with a UN Comtrade cross-check and a compact release series.",
+  "version": "2026.09.04",
+  "created": "2026-09-04",
+  "homepage": "https://github.com/JacobiusMakes/lgd-import-monitor",
+  "keywords": [
+    "international trade",
+    "imports",
+    "laboratory-grown diamonds",
+    "US Census Bureau",
+    "UN Comtrade",
+    "time series"
+  ],
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/",
+      "title": "Creative Commons Attribution 4.0 International"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Jacob Galperin",
+      "role": "maintainer",
+      "organization": "Stienhardt & Stones"
+    }
+  ],
+  "sources": [
+    {
+      "title": "US Census Bureau International Trade API",
+      "path": "https://api.census.gov/data/timeseries/intltrade/imports/hs"
+    },
+    {
+      "title": "United Nations Comtrade",
+      "path": "https://comtradeplus.un.org/"
+    }
+  ],
+  "resources": [
+    {
+      "name": "census-monthly",
+      "title": "Census monthly imports by origin",
+      "path": "data/census-hts7104911000-monthly.csv",
+      "type": "table",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {"name": "month", "type": "yearmonth"},
+          {"name": "cty_code", "type": "string"},
+          {"name": "country", "type": "string"},
+          {"name": "gen_val_usd", "type": "integer"},
+          {"name": "gen_qty", "type": "integer"},
+          {"name": "qty_unit", "type": "string"},
+          {"name": "con_val_usd", "type": "integer"},
+          {"name": "hts", "type": "string"}
+        ]
+      }
+    },
+    {
+      "name": "comtrade-partner-monthly",
+      "title": "UN Comtrade monthly imports by partner",
+      "path": "data/us-imports-hs710491-monthly.csv",
+      "type": "table",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {"name": "period", "type": "integer"},
+          {"name": "partner_code", "type": "integer"},
+          {"name": "partner", "type": "string"},
+          {"name": "value_usd", "type": "number"},
+          {"name": "qty", "type": "number"},
+          {"name": "qty_unit", "type": "string"},
+          {"name": "net_wgt_kg", "type": "number"},
+          {"name": "cif_usd", "type": "number"},
+          {"name": "fob_usd", "type": "number"}
+        ]
+      }
+    },
+    {
+      "name": "comtrade-heading-crosscheck",
+      "title": "UN Comtrade heading-family cross-check",
+      "path": "data/us-imports-hs7104-family-world-monthly.csv",
+      "type": "table",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {"name": "code", "type": "string"},
+          {"name": "desc", "type": "string"},
+          {"name": "period", "type": "integer"},
+          {"name": "value_usd", "type": "number"}
+        ]
+      }
+    },
+    {
+      "name": "latest-release",
+      "title": "Compact monthly world series for the current release",
+      "path": "releases/2026-09-04/monthly-world.csv",
+      "type": "table",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {"name": "month", "type": "yearmonth"},
+          {"name": "customs_value_usd", "type": "integer"},
+          {"name": "india_share_pct", "type": "number"}
+        ]
+      }
+    }
+  ]
+}
