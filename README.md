@@ -9,6 +9,12 @@ The dated releases are designed for citation and reuse. GitHub displays the repo
 machine-readable citation from [CITATION.cff](CITATION.cff), including the edition date and
 dataset version.
 
+## Use the data
+
+- [Browse and query all four dataset configurations on Hugging Face](https://huggingface.co/datasets/JacobiusMakes/lab-grown-diamond-import-monitor).
+- [Download the fixed September 2026 edition](https://github.com/JacobiusMakes/lgd-import-monitor/releases/tag/v2026.09.04).
+- [Open the interactive monthly-value chart](https://datawrapper.dwcdn.net/rLZxK/5/).
+
 ## Contents
 
 - `data/us-imports-hs710491-monthly.csv`: UN Comtrade, US imports of HS 710491 by partner, monthly
