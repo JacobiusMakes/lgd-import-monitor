@@ -53,6 +53,21 @@ because size and quality mix can change from month to month.
 - `latest_release`: the compact monthly table used in the current published
   edition.
 
+## Load in Python
+
+```python
+from datasets import load_dataset
+
+census = load_dataset(
+    "JacobiusMakes/lab-grown-diamond-import-monitor",
+    "census_monthly",
+)
+print(census["train"][0])
+```
+
+Each configuration is also available through Hugging Face's browser viewer,
+Parquet conversion, API, and embed controls.
+
 ## Sources and method
 
 - US Census Bureau International Trade API, general imports, HTS
