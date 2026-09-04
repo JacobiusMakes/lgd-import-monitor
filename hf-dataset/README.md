@@ -13,6 +13,10 @@ tags:
   - un-comtrade
   - time-series
   - jewelry
+  - tabular
+  - timeseries
+  - mlcroissant
+  - pandas
 configs:
   - config_name: census_monthly
     data_files: data/census-hts7104911000-monthly.csv
@@ -42,6 +46,8 @@ Comtrade data through June 2026. Census records $27.8 million in July across
 
 Customs value is not retail price. Average value per stone is not a price index
 because size and quality mix can change from month to month.
+
+[Explore the series in the interactive import monitor](https://huggingface.co/spaces/JacobiusMakes/us-lab-grown-diamond-import-monitor).
 
 ## Configurations
 
