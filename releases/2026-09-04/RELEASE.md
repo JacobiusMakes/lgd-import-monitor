@@ -1,10 +1,15 @@
-# Lab-Grown Import Monitor, edition 2026-09-04 (DRAFT, Comtrade cross-check series; Census primary series pending an API key)
+# Lab-Grown Import Monitor, edition 2026-09-04
 
-Stienhardt, New York. Data: UN Comtrade Database, United States imports, HS 710491 (synthetic
-diamonds, worked), monthly customs value, retrieved 2026-09-02. Method and caveats: METHODOLOGY.md.
-CC BY 4.0. No forecast, no price advice, nothing about Stienhardt's own volumes.
+Stienhardt, New York. Primary data: US Census Bureau, HTS 7104.91.10.00, through 2026-07,
+retrieved 2026-09-03. Cross-check: UN Comtrade, HS 710491, through 2026-06, retrieved
+2026-09-02. Method and caveats: METHODOLOGY.md. CC BY 4.0. No forecast, no price advice,
+nothing about Stienhardt's own volumes.
 
-## The number
+## Latest month
+
+Census records $27.8 million in 2026-07 across 1,324,682 stones, 59 percent below the same month a year earlier and up 52 percent from the prior month. It was the highest monthly value since the September 2025 break.
+
+## Latest month available in both series
 
 United States imports of cut lab-grown diamonds were $18.7 million in 2026-06, down 42 percent against
 2025-06. Year to date through 2026-06: $107.2 million, down 74 percent against the same months of
@@ -13,7 +18,7 @@ United States imports of cut lab-grown diamonds were $18.7 million in 2026-06, d
 ## The break in the series
 
 The monthly series ran at an average of $88.9 million in 2024. It fell from $52.4 million in August 2025 to
-$6.5 million in September 2025, an 88 percent drop in one month, and has averaged $13.7 million a month since,
+$6.5 million in September 2025, an 88 percent drop in one month, and averaged $13.7 million a month from September 2025 through 2026-06,
 about 15 percent of the 2024 pace. The step coincides with the United States tariff on Indian goods
 rising to 25 percent on 7 August 2025 and to 50 percent on 27 August 2025 (National Jeweler, August
 2025), with India supplying roughly nine dollars in ten of these imports in 2024. The partial recovery
@@ -80,10 +85,10 @@ Latest month, Census only (UN Comtrade has not yet published it): 2026-07, $27.8
 ## What this edition cannot say yet
 
 - What kind of stones these are. The Census count runs between roughly 0.4 and 2.9 million stones
-  a month at an average declared value of $8 to $27 per stone, so by count this tariff line is
-  dominated by small goods (melee), and the value series, not the count, is the measure that
-  tracks finished-jewelry supply. Neither series reports carat weight or size distribution.
-- Reclassification within HS 7104 is ruled out. The whole heading 7104 fell from $54.4 million
+  a month at an average declared value of $8 to $27 per stone. That low average suggests smaller
+  goods dominate the count, but the tariff data do not report size or carat weight. The value
+  series is more informative than the piece count for tracking the value of inbound cut stones.
+- A simple reclassification within HS 7104 appears unlikely. The whole heading 7104 fell from $54.4 million
   (August 2025) to $8.7 million (September 2025), and the neighboring lines stayed flat: 7104.99
   (other worked synthetic stones) ran between $0.8 and $5.1 million a month, 7104.21 and 7104.29
   (unworked) under $1 million, with no offsetting rise (UN Comtrade, same pull). A move to a
@@ -96,12 +101,15 @@ Latest month, Census only (UN Comtrade has not yet published it): 2026-07, $27.8
 
 - UN Comtrade Database, reporter United States, flow imports, commodity HS 710491, periods
   2024-01 to 2026-06, retrieved 2026-09-02 (public preview endpoint).
+- US Census Bureau International Trade API, general imports, HTS 7104.91.10.00, periods
+  2024-01 to 2026-07, retrieved 2026-09-03. This product uses the Census Bureau Data API but is
+  not endorsed or certified by the Census Bureau.
 - Harmonized Tariff Schedule of the United States, 7104.91.10.00, "Cut but not set, and suitable for
   use in the manufacture of jewelry", unit No., general rate Free; hts.usitc.gov, retrieved 2026-09-02.
-- National Jeweler, "Tariff on India to Rise to 50%, Trump Says" (August 2025); JCK, Rob Bates,
-  "U.S. Dropping Tariffs on Indian-Cut Diamonds and Gems, Eventually" (2026-02-09); Rapaport,
-  "US to Nix Tariff on Indian Gems and Natural Diamonds" (2026-02-07); GJEPC via JewelBuzz, "US
-  Retains 10% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25).
+- [National Jeweler, "Tariff on India to Rise to 50%, Trump Says" (2025-08-06)](https://nationaljeweler.com/articles/14165-tariff-on-india-to-rise-to-50-trump-says).
+- [JCK, Rob Bates, "U.S. Dropping Tariffs on Indian-Cut Diamonds and Gems, Eventually" (2026-02-09)](https://www.jckonline.com/editorial-article/u-s-tariffs-indian-diamonds-gems/).
+- [Rapaport, "US to Nix Tariff on Indian Gems and Natural Diamonds" (2026-02-07)](https://rapaport.com/news/us-to-nix-tariff-on-indian-gems-and-natural-diamonds/).
+- [USTR fact sheet on the Section 301 action (July 2026)](https://www.ustr.gov/about/policy-offices/press-office/fact-sheets/2026/july/fact-sheet-ustr-section-301-action-response-failure-60-economies-ban-imports-produced-forced-labor) and [JewelBuzz citing GJEPC, "US Retains 10% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25)](https://jewelbuzz.in/us-retains-10-tariff-on-indian-exports-under-new-section-301-regime/).
 - Census FT-900 release schedule: July 2026 data on 3 September 2026.
 
 Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/ (interactive, embeddable, always the latest published version).

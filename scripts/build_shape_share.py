@@ -76,7 +76,7 @@ def main():
     for name, vol, terms in fam:
         lines.append("| %s | %s | %.1f%% |" % (name, "{:,}".format(vol), 100.0 * vol / total))
     lines += ["", "## The Dutch Marquise term",
-              "Across three phrasings (\"dutch marquise diamond\", \"dutch marquise\", \"dutch marquise engagement ring\") the term draws about %s US searches a month. Semrush's twelve-month trend index for each phrasing rose over the year (mean of the last three months divided by the mean of the first three: %s). \"Dutch marquise\" is a trade name for an elongated hexagonal cut; laboratories describe the geometry as hexagonal modified brilliant." % (
+              "The comparison table counts 4,380 monthly searches across three engagement-ring phrases: \"dutch marquise engagement ring\", \"elongated hexagon engagement ring\", and \"hexagon engagement ring\". A separate broader term check, which is not part of the table's 55,320-search denominator, totals about %s monthly searches across \"dutch marquise diamond\", \"dutch marquise\", and \"dutch marquise engagement ring\". Semrush's twelve-month trend index for each broader phrasing rose over the year (mean of the last three months divided by the mean of the first three: %s). \"Dutch marquise\" is a trade name used for elongated hexagonal-cut diamonds; grading reports may use other shape descriptions." % (
                   "{:,}".format(dm_total),
                   ", ".join("%s %.1fx" % (t, g) for t, g in growth.items() if g)),
               "", "For comparison, US monthly searches for \"asscher engagement ring\" are %s, \"kite engagement ring\" %s, \"trillion engagement ring\" %s, \"elongated cushion engagement ring\" %s, and \"moval engagement ring\" %s." % tuple(

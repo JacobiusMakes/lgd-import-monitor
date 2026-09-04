@@ -25,7 +25,7 @@ Source: Semrush keyword database, United States, monthly average search volume a
 | Elongated radiant | 40 | 0.1% |
 
 ## The Dutch Marquise term
-Across three phrasings ("dutch marquise diamond", "dutch marquise", "dutch marquise engagement ring") the term draws about 12,100 US searches a month. Semrush's twelve-month trend index for each phrasing rose over the year (mean of the last three months divided by the mean of the first three: dutch marquise diamond 1.8x, dutch marquise 4.5x, dutch marquise engagement ring 3.3x). "Dutch marquise" is a trade name for an elongated hexagonal cut; laboratories describe the geometry as hexagonal modified brilliant.
+The comparison table counts 4,380 monthly searches across three engagement-ring phrases: "dutch marquise engagement ring", "elongated hexagon engagement ring", and "hexagon engagement ring". A separate broader term check, which is not part of the table's 55,320-search denominator, totals about 12,100 monthly searches across "dutch marquise diamond", "dutch marquise", and "dutch marquise engagement ring". Semrush's twelve-month trend index for each broader phrasing rose over the year (mean of the last three months divided by the mean of the first three: dutch marquise diamond 1.8x, dutch marquise 4.5x, dutch marquise engagement ring 3.3x). "Dutch marquise" is a trade name used for elongated hexagonal-cut diamonds; grading reports may use other shape descriptions.
 
 For comparison, US monthly searches for "asscher engagement ring" are 480, "kite engagement ring" 320, "trillion engagement ring" 210, "elongated cushion engagement ring" 1,300, and "moval engagement ring" 1,900.
 

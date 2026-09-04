@@ -50,6 +50,8 @@ def main():
     census_path = "data/census-hts7104911000-monthly.csv"
     census_tbl = ["(Census primary series not pulled yet: run scripts/census_pull.py with CENSUS_API_KEY.)"]
     census_note = ""
+    census_lead = ""
+    cm = {}
     if os.path.exists(census_path):
         crow = list(csv.DictReader(io.open(census_path, encoding="utf-8")))
         cm = collections.defaultdict(lambda: {"val": 0.0, "qty": 0.0, "has_total": False})
@@ -83,28 +85,64 @@ def main():
                      if prev in cm and cm[prev]["val"] else "n/a")
             census_note += ("\n\nLatest month, Census only (UN Comtrade has not yet published it): %s-%s, %s across "
                             "{:,.0f} stones, %s the same month a year earlier." % (mo[:4], mo[4:], money(c["val"]), yoy_c)).format(c["qty"])
+            pm_y, pm_m = int(mo[:4]), int(mo[4:]) - 1
+            if pm_m == 0:
+                pm_y, pm_m = pm_y - 1, 12
+            previous_month = "%04d%02d" % (pm_y, pm_m)
+            mom = (100 * (c["val"] / cm[previous_month]["val"] - 1)
+                   if previous_month in cm and cm[previous_month]["val"] else None)
+            post_break_values = [cm[p]["val"] for p in cm if "202509" <= p <= mo and cm[p]["val"] > 0]
+            high_note = " It was the highest monthly value since the September 2025 break." if c["val"] == max(post_break_values) else ""
+            census_lead = ("Census records %(value)s in %(month)s across %(qty)s stones, %(yoy)s the same month "
+                           "a year earlier and %(mom)s the prior month.%(high)s" % {
+                               "value": money(c["val"]),
+                               "month": mo[:4] + "-" + mo[4:],
+                               "qty": "{:,.0f}".format(c["qty"]),
+                               "yoy": yoy_c,
+                               "mom": ("up %.0f percent from" % mom if mom is not None and mom >= 0 else
+                                       "down %.0f percent from" % abs(mom) if mom is not None else "not comparable with"),
+                               "high": high_note,
+                           })
+
+    census_ready = bool(cm and any(v["val"] > 0 for v in cm.values()))
+    release_suffix = "" if census_ready else " (DRAFT, Census primary series pending)"
+    if not census_lead:
+        census_lead = "The Census primary series is not available yet. This edition must not be sent to reporters."
+
+    # The chart uses the Census ten-digit primary series when available, including a newer month
+    # that UN Comtrade has not published. Comtrade remains the partner-country cross-check.
+    chart_world = dict(world)
+    if census_ready:
+        for mo, values in cm.items():
+            if values["val"] > 0:
+                chart_world[mo] = values["val"]
+    chart_periods = sorted(chart_world)
+    chart_last = chart_periods[-1]
+    chart_avg_2024 = sum(chart_world[p] for p in chart_periods if p[:4] == "2024") / max(1, len([p for p in chart_periods if p[:4] == "2024"]))
+    chart_post = [p for p in chart_periods if p >= "202509"]
+    chart_avg_post = sum(chart_world[p] for p in chart_post) / max(1, len(chart_post))
 
     # ---------- chart: monthly world value, single hue, annotated ----------
     W, H = 900, 470
     L, R, T, B = 70, 30, 90, 70
     pw, ph = W - L - R, H - T - B
-    vmax = max(world[p] for p in periods)
-    step = pw / len(periods)
+    vmax = max(chart_world[p] for p in chart_periods)
+    step = pw / len(chart_periods)
     navy, ink, mute, track, bg = "#2F57B0", "#1c2440", "#4a5068", "#e6e8ef", "#fcfcfb"
     s = ['<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" role="img" aria-labelledby="t d">' % (W, H, W, H),
-         '<title id="t">US imports of cut lab-grown diamonds by month, HS 710491</title>',
-         '<desc id="d">Monthly customs value of US imports under HS 710491 from January 2024 to %s, UN Comtrade. Values fell from a 2024 average near %s to %s a month after September 2025.</desc>' % (last, money(avg_2024), money(avg_post)),
+         '<title id="t">US imports of cut lab-grown diamonds by month, HTS 7104.91.10.00</title>',
+         '<desc id="d">Monthly customs value of US imports under HTS 7104.91.10.00 from January 2024 to %s, US Census Bureau, cross-checked against UN Comtrade through %s.</desc>' % (chart_last, last),
          '<rect width="%d" height="%d" fill="%s"/>' % (W, H, bg),
          '<text x="%d" y="34" font-family="Marcellus, Georgia, serif" font-size="21" fill="%s">US imports of cut lab-grown diamonds, by month</text>' % (L, ink),
-         '<text x="%d" y="56" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="%s">Customs value, US dollars, HS 710491 (synthetic diamonds, worked). UN Comtrade, retrieved 2026-09-02; Census primary series agrees within 5 percent.</text>' % (L, mute)]
+         '<text x="%d" y="56" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="%s">Customs value, US dollars, HTS 7104.91.10.00. Census through %s; UN Comtrade cross-check through %s.</text>' % (L, mute, chart_last, last)]
     # gridlines
     for g in range(0, 5):
         v = vmax * g / 4
         yy = T + ph - ph * g / 4
         s.append('<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="%s" stroke-width="1"/>' % (L, yy, W - R, yy, track))
         s.append('<text x="%d" y="%.1f" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="%s">$%dM</text>' % (L - 8, yy + 4, mute, round(v / 1e6)))
-    for i, p in enumerate(periods):
-        v = world[p]
+    for i, p in enumerate(chart_periods):
+        v = chart_world[p]
         x = L + i * step + 2
         bw = step - 4
         bh = ph * v / vmax
@@ -116,13 +154,13 @@ def main():
             s.append('<text x="%.1f" y="%d" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="%s">%s</text>' % (x + bw / 2, T + ph + 16, mute, ("Jan " if p[4:] == "01" else "Jul ") + p[:4]))
     # annotations: tariff steps
     def xof(p):
-        return L + periods.index(p) * step
+        return L + chart_periods.index(p) * step
     for p, label in (("202508", "Aug 2025: India tariff 25% then 50%"), ("202602", "Feb 2026: reduced to 25%, deal to 18%"), ("202607", "Jul 24 2026: Section 301, India 10%")):
-        if p in periods:
+        if p in chart_periods:
             xx = xof(p)
             s.append('<line x1="%.1f" y1="%d" x2="%.1f" y2="%d" stroke="%s" stroke-width="1" stroke-dasharray="3,3"/>' % (xx, T - 6, xx, T + ph, mute))
             s.append('<text x="%.1f" y="%d" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="%s">%s</text>' % (xx + 4, T + 4, ink, label))
-    s.append('<text x="%d" y="%d" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="%s">Stienhardt, Lab-Grown Import Monitor, edition %s. CC BY 4.0. Source: UN Comtrade Database, US imports, HS 710491.</text>' % (L, H - 22, mute, a.edition))
+    s.append('<text x="%d" y="%d" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="%s">Stienhardt, Lab-Grown Import Monitor, edition %s. CC BY 4.0. Source: US Census Bureau; UN Comtrade cross-check.</text>' % (L, H - 22, mute, a.edition))
     s.append('</svg>')
     io.open(os.path.join(out_dir, "chart-monthly-value.svg"), "w", encoding="utf-8", newline="\n").write("\n".join(s))
 
@@ -156,13 +194,18 @@ def main():
     ytd_vs_two = 100 * (tot(ytd) / tot(ytd_two) - 1) if tot(ytd_two) else None
     drop = 100 * (world["202509"] / world["202508"] - 1) if "202509" in world and "202508" in world else None
 
-    release = """# Lab-Grown Import Monitor, edition %(ed)s (DRAFT, Comtrade cross-check series; Census primary series pending an API key)
+    release = """# Lab-Grown Import Monitor, edition %(ed)s%(suffix)s
 
-Stienhardt, New York. Data: UN Comtrade Database, United States imports, HS 710491 (synthetic
-diamonds, worked), monthly customs value, retrieved 2026-09-02. Method and caveats: METHODOLOGY.md.
-CC BY 4.0. No forecast, no price advice, nothing about Stienhardt's own volumes.
+Stienhardt, New York. Primary data: US Census Bureau, HTS 7104.91.10.00, through 2026-07,
+retrieved 2026-09-03. Cross-check: UN Comtrade, HS 710491, through %(last_lbl)s, retrieved
+2026-09-02. Method and caveats: METHODOLOGY.md. CC BY 4.0. No forecast, no price advice,
+nothing about Stienhardt's own volumes.
 
-## The number
+## Latest month
+
+%(census_lead)s
+
+## Latest month available in both series
 
 United States imports of cut lab-grown diamonds were %(last_val)s in %(last_lbl)s, %(yoy)s against
 %(prev_lbl)s. Year to date through %(last_lbl)s: %(ytd)s, %(ytd_prev)s against the same months of
@@ -171,7 +214,7 @@ United States imports of cut lab-grown diamonds were %(last_val)s in %(last_lbl)
 ## The break in the series
 
 The monthly series ran at an average of %(avg24)s in 2024. It fell from %(aug)s in August 2025 to
-%(sep)s in September 2025, an %(drop)s drop in one month, and has averaged %(avg_post)s a month since,
+%(sep)s in September 2025, an %(drop)s drop in one month, and averaged %(avg_post)s a month from September 2025 through %(last_lbl)s,
 about %(post_pct)s of the 2024 pace. The step coincides with the United States tariff on Indian goods
 rising to 25 percent on 7 August 2025 and to 50 percent on 27 August 2025 (National Jeweler, August
 2025), with India supplying roughly nine dollars in ten of these imports in 2024. The partial recovery
@@ -201,10 +244,10 @@ by spring 2026.
 ## What this edition cannot say yet
 
 - What kind of stones these are. The Census count runs between roughly 0.4 and 2.9 million stones
-  a month at an average declared value of $8 to $27 per stone, so by count this tariff line is
-  dominated by small goods (melee), and the value series, not the count, is the measure that
-  tracks finished-jewelry supply. Neither series reports carat weight or size distribution.
-- Reclassification within HS 7104 is ruled out. The whole heading 7104 fell from $54.4 million
+  a month at an average declared value of $8 to $27 per stone. That low average suggests smaller
+  goods dominate the count, but the tariff data do not report size or carat weight. The value
+  series is more informative than the piece count for tracking the value of inbound cut stones.
+- A simple reclassification within HS 7104 appears unlikely. The whole heading 7104 fell from $54.4 million
   (August 2025) to $8.7 million (September 2025), and the neighboring lines stayed flat: 7104.99
   (other worked synthetic stones) ran between $0.8 and $5.1 million a month, 7104.21 and 7104.29
   (unworked) under $1 million, with no offsetting rise (UN Comtrade, same pull). A move to a
@@ -217,18 +260,22 @@ by spring 2026.
 
 - UN Comtrade Database, reporter United States, flow imports, commodity HS 710491, periods
   2024-01 to %(last_lbl)s, retrieved 2026-09-02 (public preview endpoint).
+- US Census Bureau International Trade API, general imports, HTS 7104.91.10.00, periods
+  2024-01 to 2026-07, retrieved 2026-09-03. This product uses the Census Bureau Data API but is
+  not endorsed or certified by the Census Bureau.
 - Harmonized Tariff Schedule of the United States, 7104.91.10.00, "Cut but not set, and suitable for
   use in the manufacture of jewelry", unit No., general rate Free; hts.usitc.gov, retrieved 2026-09-02.
-- National Jeweler, "Tariff on India to Rise to 50%%, Trump Says" (August 2025); JCK, Rob Bates,
-  "U.S. Dropping Tariffs on Indian-Cut Diamonds and Gems, Eventually" (2026-02-09); Rapaport,
-  "US to Nix Tariff on Indian Gems and Natural Diamonds" (2026-02-07); GJEPC via JewelBuzz, "US
-  Retains 10%% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25).
+- [National Jeweler, "Tariff on India to Rise to 50%%, Trump Says" (2025-08-06)](https://nationaljeweler.com/articles/14165-tariff-on-india-to-rise-to-50-trump-says).
+- [JCK, Rob Bates, "U.S. Dropping Tariffs on Indian-Cut Diamonds and Gems, Eventually" (2026-02-09)](https://www.jckonline.com/editorial-article/u-s-tariffs-indian-diamonds-gems/).
+- [Rapaport, "US to Nix Tariff on Indian Gems and Natural Diamonds" (2026-02-07)](https://rapaport.com/news/us-to-nix-tariff-on-indian-gems-and-natural-diamonds/).
+- [USTR fact sheet on the Section 301 action (July 2026)](https://www.ustr.gov/about/policy-offices/press-office/fact-sheets/2026/july/fact-sheet-ustr-section-301-action-response-failure-60-economies-ban-imports-produced-forced-labor) and [JewelBuzz citing GJEPC, "US Retains 10%% Tariff on Indian Exports Under New Section 301 Regime" (2026-07-25)](https://jewelbuzz.in/us-retains-10-tariff-on-indian-exports-under-new-section-301-regime/).
 - Census FT-900 release schedule: July 2026 data on 3 September 2026.
 
 Chart: chart-monthly-value.svg (static) and https://datawrapper.dwcdn.net/rLZxK/ (interactive, embeddable, always the latest published version).
 Second table, search demand by ring shape (Semrush, US): shape-search-share.md, chart https://datawrapper.dwcdn.net/6MPGK/. Data: ../../data/us-imports-hs710491-monthly.csv.
 """ % dict(
-        ed=a.edition, last_val=money(world[last]), last_lbl="%s-%s" % (last[:4], last[4:]),
+        ed=a.edition, suffix=release_suffix, census_lead=census_lead,
+        last_val=money(world[last]), last_lbl="%s-%s" % (last[:4], last[4:]),
         yoy=("down %.0f percent" % -yoy if yoy is not None and yoy < 0 else ("up %.0f percent" % yoy if yoy is not None else "n/a")),
         prev_lbl="%s-%s" % (prev_year[:4], prev_year[4:]), ytd=money(tot(ytd)),
         ytd_prev=("down %.0f percent" % -ytd_vs_prev if ytd_vs_prev is not None and ytd_vs_prev < 0 else ("up %.0f percent" % ytd_vs_prev if ytd_vs_prev is not None else "n/a")),
@@ -243,8 +290,8 @@ Second table, search demand by ring shape (Semrush, US): shape-search-share.md, 
     with io.open(os.path.join(out_dir, "monthly-world.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["month", "customs_value_usd", "india_share_pct"])
-        for p in periods:
-            w.writerow([p[:4] + "-" + p[4:], int(world[p]), round(share(p, "India"), 1)])
+        for p in chart_periods:
+            w.writerow([p[:4] + "-" + p[4:], int(chart_world[p]), (round(share(p, "India"), 1) if p in world else "")])
     print("wrote", out_dir, "| last", last, money(world[last]), "| yoy", yoy, "| ytd vs prev", ytd_vs_prev, "| drop", drop)
     if "—" in release:
         raise SystemExit("em dash in release")

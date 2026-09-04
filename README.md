@@ -21,6 +21,12 @@ open data. Maintained by Stienhardt, New York. Method and caveats: [METHODOLOGY.
 python scripts/census_pull.py --from 2024-01 --to 2026-07 --out data/census-hts7104911000-monthly.csv
 ```
 
+Before publishing or sending an edition to reporters:
+
+```
+python scripts/validate_release.py --edition 2026-09-04
+```
+
 ## License
 
 Data compilations, text, and charts: CC BY 4.0. Cite "Stienhardt, Lab-Grown Import Monitor,

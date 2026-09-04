@@ -18,7 +18,7 @@ Reported fields per month: general imports value (US dollars, customs value), qu
 stones), and imports by country of origin.
 
 **Derived figure: average declared customs value per imported stone.** Value divided by quantity.
-This is the number nobody publishes. It is a declared customs value at the border, not a retail
+The Monitor calculates this derived series directly from the official value and quantity fields. It is a declared customs value at the border, not a retail
 price, not a per-carat price, and not a quality-adjusted index. It moves with the mix of sizes
 and qualities imported as much as with price. It is published because it is the only official
 per-stone measure of what enters the country.
@@ -39,10 +39,11 @@ Monitor edition is dated the day after the FT-900 and covers the same reference 
 
 ## What the numbers do not say
 
-- Melee dominates the count. On the first pull (2026-09-02) the Census series showed 0.4 to 2.9
-  million stones a month at an average declared value of $8 to $27 per stone. Large center stones
-  are a small share of the count and an unknown share of the value. Read the value series for
-  supply; read the count and per-stone value as a mix indicator only.
+- The low declared value suggests smaller goods dominate the count. On the first pull
+  (2026-09-02) the Census series showed 0.4 to 2.9 million stones a month at an average declared
+  value of $8 to $27 per stone. The tariff line does not report size or carat weight, so the
+  share represented by melee or center stones cannot be measured directly. Read the value series
+  for inbound value; read the count and per-stone value as mix indicators only.
 - Pieces, not carats. The HTS unit is number of stones. Carat weight is not reported at this
   line, so a shift toward larger stones raises average value per piece without any price change.
 - Customs value, not retail. Declared value at the border excludes duty, US wholesale margins,
@@ -69,12 +70,12 @@ Monitor edition is dated the day after the FT-900 and covers the same reference 
 
 | Effective | Measure | Rate on cut lab-grown diamonds | Source, date |
 |---|---|---|---|
-| 2025-08-07 | US tariff on Indian imports, first stage | 25 percent | National Jeweler, Lenore Fedow, 2025-08-06 |
-| 2025-08-27 | Additional 25 percent on Indian imports, citing Russian oil purchases | 50 percent total | National Jeweler, Lenore Fedow, 2025-08-06 |
-| As of 2026-02-07 | US reciprocal tariff on India (recently reduced from 50 percent) | 25 percent, plus the Free MFN rate | JCK, Rob Bates, 2026-02-09 |
-| After the US-India interim agreement (planned for March 2026) | Reciprocal tariff reduced; natural cut diamonds and gems to 0 percent; lab-grown excluded from the duty elimination (not in Annex III) | 18 percent | Rapaport 2026-02-07 quoting GJEPC; JCK 2026-02-09 |
+| 2025-08-07 | US tariff on Indian imports, first stage | 25 percent | [National Jeweler, Lenore Fedow, 2025-08-06](https://nationaljeweler.com/articles/14165-tariff-on-india-to-rise-to-50-trump-says) |
+| 2025-08-27 | Additional 25 percent on Indian imports, citing Russian oil purchases | 50 percent total | [White House fact sheet, 2025-08-06](https://www.whitehouse.gov/fact-sheets/2025/08/fact-sheet-president-donald-j-trump-addresses-threats-to-the-united-states-by-the-government-of-the-russian-federation/) |
+| As of 2026-02-07 | US reciprocal tariff on India (recently reduced from 50 percent) | 25 percent, plus the Free MFN rate | [JCK, Rob Bates, 2026-02-09](https://www.jckonline.com/editorial-article/u-s-tariffs-indian-diamonds-gems/) |
+| After the US-India interim agreement | Reciprocal tariff reduced; natural cut diamonds and gems to 0 percent; lab-grown excluded from the duty elimination (not in Annex III) | 18 percent | [White House joint statement, 2026-02-06](https://www.whitehouse.gov/briefings-statements/2026/02/united-states-india-joint-statement/); [Rapaport, 2026-02-07](https://rapaport.com/news/us-to-nix-tariff-on-indian-gems-and-natural-diamonds/) |
 | Until 2026-07-24 | Section 122 surcharge (time-limited) | 10 percent | GJEPC via JewelBuzz, 2026-07-25 |
-| From 2026-07-24, 00:01 EDT | Section 301 regime (no statutory expiry) | India 10 percent; China, Hong Kong, Thailand, Türkiye, UAE, Israel, Vietnam 12.5 percent | GJEPC via JewelBuzz, 2026-07-25 |
+| From 2026-07-24, 00:01 EDT | Section 301 regime (no statutory expiry) | India 10 percent; China, Hong Kong, Thailand, Türkiye, UAE, Israel, Vietnam 12.5 percent | [USTR fact sheet, July 2026](https://www.ustr.gov/about/policy-offices/press-office/fact-sheets/2026/july/fact-sheet-ustr-section-301-action-response-failure-60-economies-ban-imports-produced-forced-labor); [JewelBuzz citing GJEPC, 2026-07-25](https://jewelbuzz.in/us-retains-10-tariff-on-indian-exports-under-new-section-301-regime/) |
 
 Gap stated plainly: the transition from the reciprocal tariff regime to the Section 122 surcharge
 is not documented in this table yet. It is verified against primary sources before edition one
